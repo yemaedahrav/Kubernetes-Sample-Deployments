@@ -1,0 +1,24 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    exclude:
+    - pipeline.yaml
+
+pool: amey-vmpool
+
+stages:
+- stage:
+  jobs:
+  - job: Deploy
+    displayName: Kubernetes Sample Deployment
+    pool: amey-vmpool
+    steps:
+    - task: Kubernetes@0
+      displayName: 'Deploy NGINX Application'
+      inputs:
+        kubernetesServiceConnection: 'bharathi-cn-aks-svc-con'
+        command: apply
+        useConfigurationFile: true
+        configuration: '$(System.DefaultWorkingDirectory)/Dep'
