@@ -18,7 +18,7 @@ stages:
     - task: Kubernetes@0
       displayName: 'Deploy NGINX Application'
       inputs:
-        kubernetesServiceConnection: 'bharathi-cn-aks-svc-con'
+        kubernetesServiceConnection: 'amey-aks-svc-con'
         command: apply
         useConfigurationFile: true
         configuration: '$(System.DefaultWorkingDirectory)/Dep'
